@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://2jq5lc0hehqa"]
+
+[ext_resource type="Texture2D" uid="uid://83yy6nqyl8d8" path="res://scenes/menu/buttons/about1.png" id="1_uq4dg"]
+[ext_resource type="Texture2D" uid="uid://cl0lgloll8jca" path="res://scenes/menu/buttons/about3.png" id="2_jv84a"]
+[ext_resource type="Texture2D" uid="uid://bi5utamfcfw2v" path="res://scenes/menu/buttons/about2.png" id="3_c2mhv"]
+
+[node name="About-Button" type="TextureButton"]
+offset_left = 528.0
+offset_top = 249.0
+offset_right = 650.0
+offset_bottom = 344.0
+texture_normal = ExtResource("1_uq4dg")
+texture_pressed = ExtResource("2_jv84a")
+texture_hover = ExtResource("3_c2mhv")

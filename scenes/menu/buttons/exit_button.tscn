@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgd4kuo5550r2"]
+
+[ext_resource type="Texture2D" uid="uid://d01oon4a7qpt3" path="res://scenes/menu/buttons/exit_button1.png" id="1_6c3ji"]
+[ext_resource type="Texture2D" uid="uid://d1gtyk4wr1px6" path="res://scenes/menu/buttons/exit_button2.png" id="2_k0ve1"]
+
+[node name="ExitButton" type="TextureButton"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("1_6c3ji")
+texture_hover = ExtResource("2_k0ve1")

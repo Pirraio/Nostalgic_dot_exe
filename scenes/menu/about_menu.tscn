@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://crq3xqnepqsht"]
+
+[ext_resource type="Script" path="res://scenes/menu/scripts/about_menu.gd" id="1_ghw6a"]
+[ext_resource type="Texture2D" uid="uid://cadmfxcpbksey" path="res://scenes/menu/img/about_menu.png" id="2_sgujw"]
+[ext_resource type="FontFile" uid="uid://d2tvqsha76xg4" path="res://assets/fonts/PublicPixel.ttf" id="3_k66jo"]
+[ext_resource type="Texture2D" uid="uid://cpxi46sptybus" path="res://scenes/menu/buttons/back_button.png" id="4_1md0l"]
+[ext_resource type="Texture2D" uid="uid://d01oon4a7qpt3" path="res://scenes/menu/buttons/exit_button1.png" id="5_3vvwr"]
+[ext_resource type="Texture2D" uid="uid://d1gtyk4wr1px6" path="res://scenes/menu/buttons/exit_button2.png" id="6_xgt47"]
+
+[node name="About" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ghw6a")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1024.0
+offset_bottom = 768.0
+texture = ExtResource("2_sgujw")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 176.0
+offset_right = 872.0
+offset_bottom = 287.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_k66jo")
+text = "Jogo feito por:
+
+Gabriel Teixeira 
+Daniel Alves
+
+
+Esse jogo foi um projeto da disciplina Fundamentos de Jogos Digitiais I ministrada pelo Professor Charles Madeira.
+
+Curso: Tecnologia da Informação
+
+Universidade Federal do Rio Grande do Norte
+
+
+
+
+"
+autowrap_mode = 3
+
+[node name="BackButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 875.0
+offset_top = 96.0
+offset_right = 903.0
+offset_bottom = 127.0
+texture_normal = ExtResource("4_1md0l")
+
+[node name="ExitButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 821.0
+offset_top = 714.0
+offset_right = 1018.0
+offset_bottom = 762.0
+texture_normal = ExtResource("5_3vvwr")
+texture_hover = ExtResource("6_xgt47")
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

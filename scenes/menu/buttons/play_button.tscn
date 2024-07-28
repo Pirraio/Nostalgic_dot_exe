@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://cp7oim2i3b11v"]
+
+[ext_resource type="Texture2D" uid="uid://d20wjcnikba6o" path="res://scenes/menu/buttons/play_button1.png" id="1_vxb72"]
+[ext_resource type="Texture2D" uid="uid://dhgevth0f48g2" path="res://scenes/menu/buttons/play_button3.png" id="2_77dhx"]
+[ext_resource type="Texture2D" uid="uid://d3eh8wudgqt1f" path="res://scenes/menu/buttons/play_button2.png" id="3_so7vc"]
+
+[node name="Play-Button" type="TextureButton"]
+offset_left = 533.0
+offset_top = 296.0
+offset_right = 573.0
+offset_bottom = 336.0
+texture_normal = ExtResource("1_vxb72")
+texture_pressed = ExtResource("2_77dhx")
+texture_hover = ExtResource("3_so7vc")
