@@ -1,4 +1,9 @@
-[gd_scene format=3 uid="uid://bc8tkge505ea0"]
+[gd_scene load_steps=3 format=3 uid="uid://bc8tkge505ea0"]
+
+[ext_resource type="Script" path="res://scenes/cutscene/cutscene.gd" id="1_s5wg2"]
+
+[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_hx33u"]
+file = "res://scenes/cutscene/cutscene_intro.ogv"
 
 [node name="Cutscene" type="Control"]
 layout_mode = 3
@@ -7,3 +12,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_s5wg2")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+stream = SubResource("VideoStreamTheora_hx33u")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 921.0
+offset_top = 713.0
+offset_right = 1019.0
+offset_bottom = 762.0
+text = "PULAR"
+
+[connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
