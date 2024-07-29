@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxkruyrooljfl"]
+
+[ext_resource type="Texture2D" uid="uid://bvgyuj5ek0u6p" path="res://scenes/level1_pong/assets/sprites/bola.png" id="1_pdvy0"]
+[ext_resource type="Script" path="res://scenes/level1_pong/ball/ball.gd" id="1_sketx"]
+[ext_resource type="AudioStream" uid="uid://bmffyw1tybinb" path="res://scenes/level1_pong/assets/audio/impacto-barreira.wav" id="3_fi2h1"]
+[ext_resource type="AudioStream" uid="uid://chkdywed5fx75" path="res://scenes/level1_pong/assets/audio/impacto-jogador.wav" id="4_3t3x2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1trbm"]
+
+[node name="Ball" type="Area2D"]
+script = ExtResource("1_sketx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_pdvy0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1trbm")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="SoundGoalImpact" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_fi2h1")
+
+[node name="SoundPlayerImpact" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_3t3x2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

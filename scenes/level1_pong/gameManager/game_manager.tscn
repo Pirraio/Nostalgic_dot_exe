@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwq3o4w115toi"]
+
+[ext_resource type="Script" path="res://scenes/level1_pong/gameManager/game_manager.gd" id="1_f1iyj"]
+[ext_resource type="AudioStream" uid="uid://bmtcnjx7y0xfc" path="res://scenes/level1_pong/assets/audio/impacto-gol.wav" id="2_pg8jo"]
+[ext_resource type="FontFile" uid="uid://d2tvqsha76xg4" path="res://assets/fonts/PublicPixel.ttf" id="3_4roq1"]
+
+[node name="GameManager" type="Node2D"]
+script = ExtResource("1_f1iyj")
+
+[node name="AudioGoal" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_pg8jo")
+
+[node name="Vitória" type="Label" parent="."]
+offset_left = 144.0
+offset_top = 104.0
+offset_right = 912.0
+offset_bottom = 168.0
+theme_override_fonts/font = ExtResource("3_4roq1")
+theme_override_font_sizes/font_size = 64
+text = "Você Venceu!"
+
+[node name="Derrota" type="Label" parent="."]
+offset_left = 144.0
+offset_top = 40.0
+offset_right = 912.0
+offset_bottom = 104.0
+theme_override_fonts/font = ExtResource("3_4roq1")
+theme_override_font_sizes/font_size = 64
+text = "Você Perdeu!"

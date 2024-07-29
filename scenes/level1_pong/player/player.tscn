@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bijrvsldj7lah"]
+
+[ext_resource type="Texture2D" uid="uid://dhkdhfy8tjpan" path="res://scenes/level1_pong/assets/sprites/jogador.png" id="1_myvyk"]
+[ext_resource type="Script" path="res://scenes/level1_pong/player/player.gd" id="1_w40vt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ybh8c"]
+size = Vector2(20, 130)
+
+[node name="Player" type="StaticBody2D" groups=["players"]]
+script = ExtResource("1_w40vt")
+player1 = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_myvyk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ybh8c")

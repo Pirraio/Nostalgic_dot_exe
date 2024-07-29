@@ -1,0 +1,125 @@
+[gd_scene load_steps=12 format=3 uid="uid://ciem2ksh7iclo"]
+
+[ext_resource type="Texture2D" uid="uid://bkkknd5wk0b50" path="res://assets/sprites/campo-preto.png" id="1_gxfjw"]
+[ext_resource type="Texture2D" uid="uid://dhkdhfy8tjpan" path="res://assets/sprites/jogador.png" id="2_qfl23"]
+[ext_resource type="PackedScene" uid="uid://bijrvsldj7lah" path="res://scenes/player/player.tscn" id="3_08kyx"]
+[ext_resource type="PackedScene" uid="uid://cxkruyrooljfl" path="res://scenes/ball/ball.tscn" id="4_n11fj"]
+[ext_resource type="Texture2D" uid="uid://q88un1fd2pwk" path="res://assets/sprites/player.png" id="4_vgm3a"]
+[ext_resource type="PackedScene" uid="uid://bwq3o4w115toi" path="res://scenes/gameManager/game_manager.tscn" id="5_2sm25"]
+[ext_resource type="Texture2D" uid="uid://sgu28vlqdtd2" path="res://assets/sprites/balao_de_fala.png" id="5_2tbi4"]
+[ext_resource type="PackedScene" uid="uid://g32mlcklym0h" path="res://scenes/goal/goal.tscn" id="6_q46nv"]
+[ext_resource type="PackedScene" uid="uid://d0545glurciy7" path="res://scenes/pause_menu/pause_menu.tscn" id="7_01oog"]
+[ext_resource type="FontFile" uid="uid://cmif8rgp5p47c" path="res://assets/fonte/PublicPixel-z84yD.ttf" id="7_obff8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_am21e"]
+font = ExtResource("7_obff8")
+font_size = 50
+
+[node name="Main" type="Node2D"]
+
+[node name="Field" type="Sprite2D" parent="."]
+position = Vector2(639, 360)
+texture = ExtResource("1_gxfjw")
+
+[node name="FieldMidLine" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+scale = Vector2(0.5, 5.6)
+texture = ExtResource("2_qfl23")
+
+[node name="Player1" parent="." instance=ExtResource("3_08kyx")]
+position = Vector2(64, 360)
+
+[node name="Sprite2" type="Sprite2D" parent="Player1"]
+texture_filter = 1
+position = Vector2(3.75, 0)
+scale = Vector2(0.981481, 1)
+texture = ExtResource("4_vgm3a")
+
+[node name="TextureRect" type="TextureRect" parent="Player1"]
+texture_filter = 1
+offset_left = 16.0
+offset_top = -160.0
+offset_right = 360.0
+offset_bottom = -45.0
+texture = ExtResource("5_2tbi4")
+
+[node name="Label" type="Label" parent="Player1/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_obff8")
+text = "O que  aconteceu comigo?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Player2" parent="." instance=ExtResource("3_08kyx")]
+position = Vector2(1216, 360)
+player1 = false
+
+[node name="Ball" parent="." instance=ExtResource("4_n11fj")]
+position = Vector2(640, 360)
+
+[node name="GameManager" parent="." instance=ExtResource("5_2sm25")]
+
+[node name="GoalP1" parent="." instance=ExtResource("6_q46nv")]
+position = Vector2(-64, 0)
+
+[node name="GoalP2" parent="." instance=ExtResource("6_q46nv")]
+position = Vector2(1344, 0)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="PointsPanel" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerPoints" type="Label" parent="UI/PointsPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.244531
+anchor_top = 0.0111111
+anchor_right = 0.244531
+anchor_bottom = 0.0111111
+offset_left = 202.0
+offset_top = 2.0
+offset_right = 252.0
+offset_bottom = 52.0
+grow_horizontal = 2
+text = "0"
+label_settings = SubResource("LabelSettings_am21e")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CPUPoints" type="Label" parent="UI/PointsPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 75.0
+offset_top = 10.0
+offset_right = 125.0
+offset_bottom = 60.0
+grow_horizontal = 2
+text = "0"
+label_settings = SubResource("LabelSettings_am21e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("7_01oog")]
+visible = false
+
+[connection signal="area_entered" from="GoalP1" to="GameManager" method="_on_goal_p_1_area_entered"]
+[connection signal="area_entered" from="GoalP2" to="GameManager" method="_on_goal_p_2_area_entered"]
