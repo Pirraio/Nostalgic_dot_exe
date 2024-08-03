@@ -8,6 +8,7 @@ func _ready():
 	transition.play("RESET")
 	transition.play("fade_in")
 	
+	
 
 func start():
 	$"Play-Button/Play".play()

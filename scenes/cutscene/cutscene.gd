@@ -2,6 +2,7 @@ extends Control
 
 @onready var color_rect = $ColorRect
 
+signal video_finished
 var menu = preload("res://scenes/menu/menu.tscn")
 
 func _ready():
