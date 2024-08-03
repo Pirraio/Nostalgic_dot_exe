@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://xh3h7gml3oyt"]
+[gd_scene load_steps=8 format=3 uid="uid://xh3h7gml3oyt"]
 
 [ext_resource type="Script" path="res://scenes/menu/scripts/menu.gd" id="1_txiuq"]
 [ext_resource type="Texture2D" uid="uid://cpfbk62tubg4n" path="res://scenes/menu/img/menu.png" id="2_ti105"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://2jq5lc0hehqa" path="res://scenes/menu/buttons/about_button.tscn" id="4_itneq"]
 [ext_resource type="AudioStream" uid="uid://dvvatgbkbbplf" path="res://assets/audio/play_button.wav" id="4_rub2g"]
 [ext_resource type="PackedScene" uid="uid://dgd4kuo5550r2" path="res://scenes/menu/buttons/exit_button.tscn" id="5_85xw2"]
+[ext_resource type="PackedScene" uid="uid://6jex8cmlwo5b" path="res://scenes/transition.tscn" id="7_wm4ym"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -32,6 +33,7 @@ offset_bottom = 374.0
 
 [node name="Play" type="AudioStreamPlayer2D" parent="Play-Button"]
 stream = ExtResource("4_rub2g")
+volume_db = -10.0
 
 [node name="About-Button" parent="." instance=ExtResource("4_itneq")]
 layout_mode = 2
@@ -47,6 +49,9 @@ offset_top = 714.0
 offset_right = 1018.0
 offset_bottom = 762.0
 
+[node name="Transition" parent="." instance=ExtResource("7_wm4ym")]
+
 [connection signal="pressed" from="Play-Button" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="About-Button" to="." method="_on_about_button_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="animation_finished" from="Transition" to="." method="_on_transition_animation_finished"]

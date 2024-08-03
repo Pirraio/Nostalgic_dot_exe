@@ -1,0 +1,72 @@
+[gd_scene load_steps=13 format=3 uid="uid://djqane2tvmm32"]
+
+[ext_resource type="Texture2D" uid="uid://bpms4ukmtv21s" path="res://scenes/level2_2dplatform/assets/sprites/idle_1.png" id="1_c6yql"]
+[ext_resource type="Script" path="res://scenes/level2_2dplatform/scripts/player.gd" id="1_th7f3"]
+[ext_resource type="Texture2D" uid="uid://bpqmhfx3vuglw" path="res://scenes/level2_2dplatform/assets/sprites/walk_1.png" id="3_igbf6"]
+[ext_resource type="Texture2D" uid="uid://olkiifsw80hu" path="res://scenes/level2_2dplatform/assets/sprites/walk_2.png" id="4_l7gvo"]
+[ext_resource type="Texture2D" uid="uid://coyp20upgy4y6" path="res://scenes/level2_2dplatform/assets/sprites/walk_3.png" id="5_qxsoo"]
+[ext_resource type="Texture2D" uid="uid://cn1rk7v78hnil" path="res://scenes/level2_2dplatform/assets/sprites/walk_4.png" id="6_jlfr8"]
+[ext_resource type="Texture2D" uid="uid://b7rucbbcr7vlc" path="res://scenes/level2_2dplatform/assets/sprites/walk_5.png" id="7_7hjmi"]
+[ext_resource type="Texture2D" uid="uid://cb51kr16mj36r" path="res://scenes/level2_2dplatform/assets/sprites/walk_6.png" id="8_idudy"]
+[ext_resource type="Texture2D" uid="uid://dk5ekwo34wk2d" path="res://scenes/level2_2dplatform/assets/sprites/walk_7.png" id="9_5fomp"]
+[ext_resource type="Texture2D" uid="uid://sonq656cj4ay" path="res://scenes/level2_2dplatform/assets/sprites/walk_8.png" id="10_xrcbd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7kf7b"]
+size = Vector2(16, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m0och"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_c6yql")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_igbf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_l7gvo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qxsoo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_jlfr8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7hjmi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_idudy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5fomp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_xrcbd")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[node name="PlayerPlatform2D" type="CharacterBody2D"]
+position = Vector2(504, 416)
+scale = Vector2(3, 3)
+script = ExtResource("1_th7f3")
+jump_force = 750
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.00136e-05)
+shape = SubResource("RectangleShape2D_7kf7b")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1.00136e-05)
+sprite_frames = SubResource("SpriteFrames_m0och")
+animation = &"idle"
+autoplay = "idle"

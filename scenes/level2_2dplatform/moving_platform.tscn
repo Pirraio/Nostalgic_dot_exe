@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://bp4u6sj6rlvdu"]
+
+[ext_resource type="Texture2D" uid="uid://drfiuyej2lone" path="res://scenes/level2_2dplatform/assets/tileset/SimpleTileset2.png" id="1_bk1n8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7fqef"]
+size = Vector2(48, 16)
+
+[sub_resource type="Animation" id="Animation_vgiab"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4uhla"]
+resource_name = "move_loop"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(64, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eiuef"]
+_data = {
+"RESET": SubResource("Animation_vgiab"),
+"move_loop": SubResource("Animation_4uhla")
+}
+
+[node name="MovingPlatform" type="Node2D"]
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
+texture = ExtResource("1_bk1n8")
+region_enabled = true
+region_rect = Rect2(80, 80, 48, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+shape = SubResource("RectangleShape2D_7fqef")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatableBody2D"]
+libraries = {
+"": SubResource("AnimationLibrary_eiuef")
+}
+autoplay = "move_loop"

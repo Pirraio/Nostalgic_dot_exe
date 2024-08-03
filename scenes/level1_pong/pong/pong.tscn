@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ciem2ksh7iclo"]
+[gd_scene load_steps=13 format=3 uid="uid://ciem2ksh7iclo"]
 
 [ext_resource type="Texture2D" uid="uid://bkkknd5wk0b50" path="res://scenes/level1_pong/assets/sprites/campo-preto.png" id="1_gxfjw"]
 [ext_resource type="Texture2D" uid="uid://dhkdhfy8tjpan" path="res://scenes/level1_pong/assets/sprites/jogador.png" id="2_qfl23"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://g32mlcklym0h" path="res://scenes/level1_pong/goal/goal.tscn" id="6_q46nv"]
 [ext_resource type="PackedScene" uid="uid://d0545glurciy7" path="res://scenes/level1_pong/pause_menu/pause_menu.tscn" id="7_01oog"]
 [ext_resource type="FontFile" uid="uid://d2tvqsha76xg4" path="res://assets/fonts/PublicPixel.ttf" id="7_obff8"]
+[ext_resource type="PackedScene" uid="uid://6jex8cmlwo5b" path="res://scenes/transition.tscn" id="11_bvm0m"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_am21e"]
 font = ExtResource("7_obff8")
@@ -127,6 +128,9 @@ vertical_alignment = 1
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("7_01oog")]
 
+[node name="Transition" parent="." instance=ExtResource("11_bvm0m")]
+
 [connection signal="timeout" from="Player1/PlayerDialogue/MessageTimeout" to="GameManager" method="_on_message_timeout_timeout"]
 [connection signal="area_entered" from="GoalP1" to="GameManager" method="_on_goal_p_1_area_entered"]
 [connection signal="area_entered" from="GoalP2" to="GameManager" method="_on_goal_p_2_area_entered"]
+[connection signal="animation_finished" from="Transition" to="GameManager" method="_on_transition_animation_finished"]

@@ -14,7 +14,8 @@ var cpu_points : int = 0
 var player_win : bool = false 
 var cpu_win : bool = false
 var endgame : bool = false
-var points_to_win : int = 5
+var points_to_win : int = 3
+var platform2D = preload("res://scenes/level2_2dplatform/plataforma_2d.tscn")
 
 var rng = RandomNumberGenerator.new()
 
@@ -30,9 +31,11 @@ var player_dialogue_on_win = ["Entendi!", "Era só isso mesmo?"]
 @onready var ball : Area2D = $"../Ball"
 @onready var playerPointsPanel : Label = $"../UI/PointsPanel/PlayerPoints"
 @onready var CPUPointsPanel : Label = $"../UI/PointsPanel/CPUPoints"
+@onready var transition = $"../Transition"
 
 func _ready():
 	print("comecou")
+	transition.play("fade_in")
 	rng.randomize()
 	show_player_say(Dialogue.INITIAL)
 	var chance_of_random_dialogue = 1
@@ -56,7 +59,7 @@ func verify_end_game() -> void:
 		$"Vitória".show()
 		await get_tree().create_timer(3).timeout
 		$"Vitória".hide()
-		get_tree().change_scene_to_file("res://scenes/menu/menu.tscn")
+		transition.play("fade_out")
 		
 		return
 	if cpu_points == points_to_win:
@@ -114,3 +117,8 @@ func _on_goal_p_2_area_entered(area):
 
 func _on_message_timeout_timeout():
 	$"../Player1/PlayerDialogue".hide()
+
+
+func _on_transition_animation_finished(anim_name):
+	if (anim_name == "fade_out"):
+		get_tree().change_scene_to_packed(platform2D)

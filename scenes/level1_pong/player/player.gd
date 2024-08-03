@@ -25,3 +25,6 @@ func move_player(delta : float) -> void:
 			
 func player_move_limit() -> void:
 	position.y = clamp(position.y, 64, 654)
+
+
+

@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjm02wol26qwt"]
+
+[ext_resource type="FontFile" uid="uid://d2tvqsha76xg4" path="res://assets/fonts/PublicPixel.ttf" id="1_5fyeq"]
+[ext_resource type="Script" path="res://scenes/cena_final.gd" id="1_h2grh"]
+[ext_resource type="PackedScene" uid="uid://6jex8cmlwo5b" path="res://scenes/transition.tscn" id="3_r276u"]
+
+[node name="ColorRect" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_h2grh")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 57.0
+offset_right = 947.0
+offset_bottom = 121.0
+theme_override_fonts/font = ExtResource("1_5fyeq")
+theme_override_font_sizes/font_size = 64
+text = "Você Escapou!
+"
+
+[node name="Transition" parent="." instance=ExtResource("3_r276u")]
+
+[connection signal="animation_finished" from="Transition" to="." method="_on_transition_animation_finished"]
