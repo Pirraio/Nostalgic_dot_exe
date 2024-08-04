@@ -14,6 +14,7 @@ var topdown = preload("res://scenes/level3_topdown/topdown.tscn")
 func _ready():
 	#print(color_rect.position)
 	#print(camera_player.limit_left)
+	transition.play("RESET")
 	transition.play("fade_in")
 	$Balao.hide()
 	$Balao/Timer.start()

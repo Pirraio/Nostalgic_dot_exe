@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://s6vjoh75foif"]
+[gd_scene load_steps=8 format=3 uid="uid://cw8vt7dadn0s4"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_g3orf"]
 [ext_resource type="PackedScene" uid="uid://xh3h7gml3oyt" path="res://scenes/menu/menu.tscn" id="1_oh7n4"]
@@ -6,14 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://ciem2ksh7iclo" path="res://scenes/level1_pong/pong/pong.tscn" id="4_b3uwb"]
 [ext_resource type="PackedScene" uid="uid://cb8517mgx2q65" path="res://scenes/level2_2dplatform/plataforma_2d.tscn" id="5_bndlw"]
 [ext_resource type="PackedScene" uid="uid://c1onucg3271b0" path="res://scenes/level3_topdown/topdown.tscn" id="5_oe826"]
-[ext_resource type="PackedScene" uid="uid://bjm02wol26qwt" path="res://scenes/cena_final.tscn" id="6_evyqc"]
+[ext_resource type="PackedScene" uid="uid://ds58yjlcr4rq" path="res://scenes/cutscene_final.tscn" id="7_cxqcw"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_g3orf")
 
-[node name="Menu" parent="." instance=ExtResource("1_oh7n4")]
-
 [node name="Cutscene" parent="." instance=ExtResource("1_ok4ko")]
+
+[node name="Menu" parent="." instance=ExtResource("1_oh7n4")]
 
 [node name="Pong" parent="." instance=ExtResource("4_b3uwb")]
 
@@ -21,4 +21,4 @@ script = ExtResource("1_g3orf")
 
 [node name="Topdown" parent="." instance=ExtResource("5_oe826")]
 
-[node name="CenaFinal" parent="." instance=ExtResource("6_evyqc")]
+[node name="CutsceneFinal" parent="." instance=ExtResource("7_cxqcw")]

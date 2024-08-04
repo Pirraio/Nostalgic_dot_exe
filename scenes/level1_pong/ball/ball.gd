@@ -9,7 +9,7 @@ var new_direction : Vector2 = Vector2(0, 0)
 
 
 var y_min : float = 0
-var y_max : float = 768
+var y_max : float = 760
 
 @onready var timer : Timer = $Timer
 

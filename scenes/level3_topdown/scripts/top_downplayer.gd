@@ -3,17 +3,24 @@ extends CharacterBody2D
 @export var speed = 250
 var last_direction = Vector2.ZERO
 
-var final = preload("res://scenes/cena_final.tscn")
-
+var final = preload("res://scenes/cutscene_final.tscn")
 
 @onready var transition = $"../Transition"
-
+@onready var camera_2d = $Camera2D
 @onready var sprite = $AnimatedSprite2D
+@onready var player = $"."
 
 func _ready():
-	transition.get_node("ColorRect").visible = false
+	transition.play("RESET")
+	transition.play("fade_in")
 	$TextureRect.hide()
 	
+func _process(delta):
+	var color_rect = transition.get_node("ColorRect")
+	color_rect.scale.x = 3
+	color_rect.scale.y = 3
+	color_rect.position.x = player.position.x - 1024
+	color_rect.position.y = player.position.y - 768
 
 func _physics_process(_delta):
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -36,8 +43,7 @@ func _on_area_2d_body_entered(_body):
 	call_deferred("change_level")
 	
 func change_level():
-	get_tree().change_scene_to_packed(final)
-	#transition.play("fade_out")
+	transition.play("fade_out")
 
 		
 func _on_timer_timeout():
@@ -47,4 +53,5 @@ func _on_timer_timeout():
 
 
 func _on_transition_animation_finished(anim_name):
-	pass
+	if (anim_name == "fade_out"):
+		get_tree().change_scene_to_packed(final)
