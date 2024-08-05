@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://mkd51hqydorc"]
+
+[ext_resource type="Script" path="res://scenes/menu/scripts/menu2.gd" id="1_m5lut"]
+[ext_resource type="Texture2D" uid="uid://cpfbk62tubg4n" path="res://scenes/menu/img/menu.png" id="2_mebnx"]
+[ext_resource type="PackedScene" uid="uid://cp7oim2i3b11v" path="res://scenes/menu/buttons/play_button.tscn" id="3_55bta"]
+[ext_resource type="AudioStream" uid="uid://dvvatgbkbbplf" path="res://assets/audio/play_button.wav" id="4_au3iw"]
+[ext_resource type="PackedScene" uid="uid://2jq5lc0hehqa" path="res://scenes/menu/buttons/about_button.tscn" id="5_pwjnb"]
+[ext_resource type="PackedScene" uid="uid://dgd4kuo5550r2" path="res://scenes/menu/buttons/exit_button.tscn" id="6_3jjul"]
+[ext_resource type="PackedScene" uid="uid://6jex8cmlwo5b" path="res://scenes/transition.tscn" id="7_551im"]
+
+[node name="Menu2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m5lut")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 1026.0
+offset_bottom = 768.0
+texture = ExtResource("2_mebnx")
+
+[node name="Play-Button" parent="." instance=ExtResource("3_55bta")]
+layout_mode = 2
+offset_left = 430.0
+offset_top = 260.0
+offset_right = 606.0
+offset_bottom = 374.0
+
+[node name="Play" type="AudioStreamPlayer2D" parent="Play-Button"]
+stream = ExtResource("4_au3iw")
+volume_db = -10.0
+
+[node name="About-Button" parent="." instance=ExtResource("5_pwjnb")]
+layout_mode = 2
+offset_left = 453.0
+offset_top = 393.0
+offset_right = 575.0
+offset_bottom = 498.0
+
+[node name="ExitButton" parent="." instance=ExtResource("6_3jjul")]
+layout_mode = 2
+offset_left = 821.0
+offset_top = 714.0
+offset_right = 1018.0
+offset_bottom = 762.0
+
+[node name="Transition" parent="." instance=ExtResource("7_551im")]
+
+[connection signal="pressed" from="Play-Button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="About-Button" to="." method="_on_about_button_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="animation_finished" from="Transition" to="." method="_on_transition_animation_finished"]

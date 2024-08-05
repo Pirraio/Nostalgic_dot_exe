@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cw8vt7dadn0s4"]
+[gd_scene load_steps=10 format=3 uid="uid://cw8vt7dadn0s4"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_g3orf"]
 [ext_resource type="PackedScene" uid="uid://xh3h7gml3oyt" path="res://scenes/menu/menu.tscn" id="1_oh7n4"]
 [ext_resource type="PackedScene" uid="uid://bc8tkge505ea0" path="res://scenes/cutscene/cutscene.tscn" id="1_ok4ko"]
 [ext_resource type="PackedScene" uid="uid://ciem2ksh7iclo" path="res://scenes/level1_pong/pong/pong.tscn" id="4_b3uwb"]
+[ext_resource type="PackedScene" uid="uid://mkd51hqydorc" path="res://scenes/menu/menu2.tscn" id="4_oy28n"]
+[ext_resource type="PackedScene" uid="uid://crq3xqnepqsht" path="res://scenes/menu/about_menu.tscn" id="4_uvni0"]
 [ext_resource type="PackedScene" uid="uid://cb8517mgx2q65" path="res://scenes/level2_2dplatform/plataforma_2d.tscn" id="5_bndlw"]
 [ext_resource type="PackedScene" uid="uid://c1onucg3271b0" path="res://scenes/level3_topdown/topdown.tscn" id="5_oe826"]
 [ext_resource type="PackedScene" uid="uid://ds58yjlcr4rq" path="res://scenes/cutscene_final.tscn" id="7_cxqcw"]
@@ -14,6 +16,10 @@ script = ExtResource("1_g3orf")
 [node name="Cutscene" parent="." instance=ExtResource("1_ok4ko")]
 
 [node name="Menu" parent="." instance=ExtResource("1_oh7n4")]
+
+[node name="Menu2" parent="." instance=ExtResource("4_oy28n")]
+
+[node name="About" parent="." instance=ExtResource("4_uvni0")]
 
 [node name="Pong" parent="." instance=ExtResource("4_b3uwb")]
 

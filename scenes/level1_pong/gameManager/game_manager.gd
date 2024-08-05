@@ -35,6 +35,7 @@ var player_dialogue_on_win = ["Entendi!", "Era só isso mesmo?"]
 
 func _ready():
 	print("comecou")
+	transition.play("RESET")
 	transition.play("fade_in")
 	rng.randomize()
 	show_player_say(Dialogue.INITIAL)
@@ -58,8 +59,8 @@ func verify_end_game() -> void:
 		$"../FieldMidLine".hide()
 		$"Vitória".show()
 		await get_tree().create_timer(3).timeout
-		$"Vitória".hide()
 		transition.play("fade_out")
+		$"Vitória".hide()
 		
 		return
 	if cpu_points == points_to_win:
@@ -68,7 +69,6 @@ func verify_end_game() -> void:
 		$"../FieldMidLine".hide()
 		$Derrota.show()
 		await get_tree().create_timer(3).timeout
-		
 		get_tree().reload_current_scene()
 		$Derrota.hide()
 		return

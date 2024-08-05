@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bc8tkge505ea0"]
+[gd_scene load_steps=4 format=3 uid="uid://bc8tkge505ea0"]
 
 [ext_resource type="Script" path="res://scenes/cutscene/cutscene.gd" id="1_s5wg2"]
+[ext_resource type="PackedScene" uid="uid://6jex8cmlwo5b" path="res://scenes/transition.tscn" id="2_udmbh"]
 
 [sub_resource type="VideoStreamTheora" id="VideoStreamTheora_hx33u"]
 file = "res://scenes/cutscene/cutscene_intro.ogv"
@@ -36,6 +37,9 @@ offset_top = 713.0
 offset_right = 1019.0
 offset_bottom = 762.0
 text = "PULAR"
+
+[node name="Transition" parent="." instance=ExtResource("2_udmbh")]
+autoplay = "RESET"
 
 [connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

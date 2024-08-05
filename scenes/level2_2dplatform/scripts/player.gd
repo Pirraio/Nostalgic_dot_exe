@@ -9,8 +9,6 @@ extends CharacterBody2D
 @onready var camera_player = $CameraPlayer
 var topdown = preload("res://scenes/level3_topdown/topdown.tscn")
 
-
-
 func _ready():
 	#print(color_rect.position)
 	#print(camera_player.limit_left)

@@ -9,8 +9,9 @@ func _ready():
 	color_rect.visible = true
 	await get_tree().create_timer(3).timeout
 	color_rect.visible = false
+	transition.play("RESET")
 	transition.play("fade_in")
-	await get_tree().create_timer(10).timeout
+	await get_tree().create_timer(7).timeout
 	transition.play("fade_out")
 
 

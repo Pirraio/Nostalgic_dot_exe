@@ -662,8 +662,6 @@ size = Vector2(110, 736)
 [node name="Plataforma2D" type="Node2D"]
 metadata/_edit_group_ = true
 
-[node name="Transition" parent="." instance=ExtResource("12_k72cr")]
-
 [node name="Player" parent="." instance=ExtResource("1_c7y2d")]
 position = Vector2(72, -64)
 collision_layer = 3
@@ -741,6 +739,9 @@ shape = SubResource("RectangleShape2D_imxw0")
 position = Vector2(1655, -360)
 shape = SubResource("RectangleShape2D_imxw0")
 
-[connection signal="animation_finished" from="Transition" to="Player" method="_on_transition_animation_finished"]
+[node name="Transition" parent="." instance=ExtResource("12_k72cr")]
+autoplay = "fade_in"
+
 [connection signal="timeout" from="Player/Balao/Timer" to="Player" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="Player" method="_on_area_2d_body_entered"]
+[connection signal="animation_finished" from="Transition" to="Player" method="_on_transition_animation_finished"]

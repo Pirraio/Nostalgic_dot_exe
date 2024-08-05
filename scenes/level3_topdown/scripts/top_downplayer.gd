@@ -9,9 +9,12 @@ var final = preload("res://scenes/cutscene_final.tscn")
 @onready var camera_2d = $Camera2D
 @onready var sprite = $AnimatedSprite2D
 @onready var player = $"."
+@onready var color_rect = $"../ColorRect"
 
 func _ready():
+	color_rect.show()
 	transition.play("RESET")
+	color_rect.hide()
 	transition.play("fade_in")
 	$TextureRect.hide()
 	

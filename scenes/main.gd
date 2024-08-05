@@ -1,6 +1,5 @@
 extends Node2D
 
-signal cutscene_finished
 
 var cutscene = preload("res://scenes/cutscene/cutscene.tscn")
 
